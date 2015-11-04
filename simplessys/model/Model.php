@@ -26,8 +26,8 @@ class Model extends mysql
                 '$password',
                 '$email'
         )";
-        $this->connect();
-        $success = mysql_query($sql);
+
+        $success = $this->connect()->query($sql);
         if ($success) {
            echo "Sent";
         } else {

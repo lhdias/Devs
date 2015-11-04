@@ -22,10 +22,9 @@ class register
         $this->password = $_POST['password'];
         $model = new Model();
         if ($this->name != '' && $this->email != '' && $this->password != '') {
-            $model->connect();
             $sql = "SELECT * FROM usuarios";
-            $result = mysql_query($sql);
-            while ($table = mysql_fetch_array($result)) {
+            $result = $this->connect()->query($sql);
+            while ($table = $result->fetch_array()) {
                 if ($this->email == $table['email'] && $this->password == $table['password']) {
                     return header("location:/simplessys/?page=register&logged=exist");
                     break;

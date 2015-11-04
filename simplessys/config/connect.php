@@ -14,7 +14,7 @@ class mysql
     private $db = 'cadastro';
     public function connect()
     {
-        $conn = mysql_connect($this->server, $this->user, $this->pass) or die("Erro mysql connect!");
-        $database = mysql_select_db($this->db, $conn);
+        $conn = new  mysqli($this->server, $this->user, $this->pass, $this->db);
+        return $conn;
     }
 }
